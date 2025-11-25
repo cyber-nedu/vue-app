@@ -6,6 +6,7 @@ import Home from './views/Home.vue';
 import About from './views/About.vue';
 import Service from './Views/Service.vue';
 import Notfound from './Views/Notfound.vue';
+ 
 
 
 const routes = [
