@@ -3,11 +3,10 @@ import { ref, onMounted, onUnmounted } from 'vue';
 import { Icon } from '@iconify/vue';
 import { useRouter } from 'vue-router'; 
 
-// 1. State for the sidebar visibility
 const isMenuOpen = ref(false);
 const router = useRouter();
 
-// 2. Functions to control the state
+
 const openMenu = () => {
   isMenuOpen.value = true;
 };
@@ -16,35 +15,35 @@ const closeMenu = () => {
   isMenuOpen.value = false;
 };
 
-// 3. Close the menu and navigate when a link is clicked
+
 const handleLinkClick = (path) => {
   closeMenu();
   if (path) {
-    // Navigates after closing the menu
+    
     router.push(path);
   }
 };
 
-// 4. Handle click outside (Click Listener on the whole document)
+
 const handleClickOutside = (event) => {
   const navElement = document.querySelector('nav');
-  // Check if the click is outside the <nav> element
+
   if (navElement && !navElement.contains(event.target)) {
-    // If the menu is open and the click is outside <nav>
+
     if (isMenuOpen.value) {
       closeMenu();
     }
   }
 };
 
-// 5. Lifecycle hooks to add/remove the event listener
+
 onMounted(() => {
-  // Add the click listener to the entire document when the component is mounted
+
   document.addEventListener('click', handleClickOutside);
 });
 
 onUnmounted(() => {
-  // Clean up the listener when the component is destroyed
+
   document.removeEventListener('click', handleClickOutside);
 });
 </script>
@@ -88,6 +87,8 @@ onUnmounted(() => {
       
     </ul>
   </nav>
+
+
 </template>
 
 <style>
@@ -110,6 +111,7 @@ nav{
   justify-content: space-between;
   align-items: center;
   padding: 0 40px;
+  height: 60px;
 }
 
 ul{
